@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --teal: #14758a;
+  --teal-dark: #0d3c45;
+  --teal-hover: #106071;
+  --orange: #f2941f;
+  --orange-hover: #d98014;
+  --blue: #4a90d9;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.006em;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+}
+
+.font-mono, .tabular {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 191 74% 31%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 32 89% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 191 74% 31%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeInUp 0.4s ease-out both; }
+
+@keyframes splash-slide {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+
+/* ============================================================
+   Peningkatan keterbacaan & tampilan modern (global, brand tetap)
+   ============================================================ */
+
+/* Bayangan lembut & modern untuk seluruh kartu (menggantikan shadow bawaan) */
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04),
+              0 1px 3px 0 rgba(15, 23, 42, 0.06) !important;
+}
+.shadow-md {
+  box-shadow: 0 2px 4px -1px rgba(15, 23, 42, 0.06),
+              0 8px 20px -4px rgba(15, 23, 42, 0.10) !important;
+}
+.shadow-lg {
+  box-shadow: 0 10px 30px -6px rgba(15, 23, 42, 0.14) !important;
+}
+
+/* Transisi halus untuk kartu & tombol interaktif */
+button, a, .transition-all, .transition-colors {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus ring yang jelas & aksesibel (keyboard) tanpa mengubah warna brand */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #14758a;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Warna seleksi teks selaras brand */
+::selection {
+  background: #14758a;
+  color: #ffffff;
+}
+
+/* Angka rata & konsisten pada tabel keuangan */
+table { font-variant-numeric: tabular-nums; }
+
+/* Utilitas keterbacaan: teks panjang lebih nyaman dibaca */
+.prose-readable p { line-height: 1.7; }
+.prose-readable li { line-height: 1.65; }
+
+/* Scrollbar tipis untuk panel dalam (mis. panel bantuan) */
+.thin-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+/* Animasi masuk lembut untuk elemen bertahap */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.animate-fade-in { animation: fadeIn 0.3s ease-out both; }
